@@ -24,7 +24,7 @@ const success = (request, response, acceptedTerms) => {
         return respond(request, response, 200, responseXML);
     }
     
-    respondJSON(request, response, 200, responseJSON);
+    return respondJSON(request, response, 200, responseJSON);
 };
 
 const badRequest = (request, response, acceptedTerms, params) => {
@@ -96,7 +96,7 @@ const unauthorized = (request, response, acceptedTerms, params) => {
     return respondJSON(request, response, 200, responseJSON);
 };
 
-const forbidden = (request, response, acceptedTerms, params) => {
+const forbidden = (request, response, acceptedTerms) => {
     const responseJSON = {
         message: 'You do not have access to this content',
         id: 'forbidden',
@@ -115,7 +115,7 @@ const forbidden = (request, response, acceptedTerms, params) => {
     return respondJSON(request, response, 403, responseJSON);
 };
 
-const internal = (request, response, acceptedTerms, params) => {
+const internal = (request, response, acceptedTerms) => {
     const responseJSON = {
         message: 'Internal Server Error. Something went wrong',
         id: 'internalError',
@@ -134,7 +134,7 @@ const internal = (request, response, acceptedTerms, params) => {
     return respondJSON(request, response, 500, responseJSON);
 };
 
-const notImplemented = (request, response, acceptedTerms, params) => {
+const notImplemented = (request, response, acceptedTerms) => {
     const responseJSON = {
         message: 'A get request for this page has not been implemented yet. Check again later for updated content',
         id: "notImplemented",
